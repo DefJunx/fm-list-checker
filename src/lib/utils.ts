@@ -1,4 +1,4 @@
-import type { LoadEvent } from '@sveltejs/kit';
+import { fail, type LoadEvent } from '@sveltejs/kit';
 
 export const DOB_ID = 'P569';
 export const DOD_ID = 'P570';
@@ -9,6 +9,8 @@ export type Person = {
 	dod: Date | undefined;
 	age: number;
 };
+
+export const throwError = (code = 500, error = 'Unexpected Error') => fail(code, { error });
 
 export const getSearchUrl = (query: string) =>
 	`https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&ppprop=wikibase_item&titles=${encodeURIComponent(

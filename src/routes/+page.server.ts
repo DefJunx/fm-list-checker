@@ -1,5 +1,5 @@
-import { getInfoFromWikipedia, type Person } from '$lib/utils';
-import { fail } from '@sveltejs/kit';
+import { MAX_LIST_LENGTH } from '$lib/constants';
+import { getInfoFromWikipedia, throwError, type Person } from '$lib/utils';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -11,8 +11,8 @@ export const actions: Actions = {
 		const people: Person[] = [];
 		const notFoundPeople: string[] = [];
 
-		if (names.length > 25) {
-			return fail(500, { errorMessage: 'La lista può essere di massimo 25 nomi, riprova!' });
+		if (names.length > MAX_LIST_LENGTH) {
+			return throwError(500, 'La lista può essere di massimo 25 nomi, riprova!');
 		}
 
 		for (const name of names) {
