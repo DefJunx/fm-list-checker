@@ -4,10 +4,10 @@ export const DOB_ID = 'P569';
 export const DOD_ID = 'P570';
 
 export type Person = {
-	name: string | null;
-	dob: Date | null;
-	dod: Date | null;
-	age: number | null;
+	name: string;
+	dob: Date;
+	dod: Date | undefined;
+	age: number;
 };
 
 export const getSearchUrl = (query: string) =>
@@ -55,7 +55,7 @@ export const getInfoFromWikipedia = async (
 	return {
 		name,
 		dob,
-		dod: null,
+		dod: undefined,
 		age
 	};
 };
