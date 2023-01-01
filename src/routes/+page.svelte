@@ -15,6 +15,10 @@
 		</ul>
 	{/if}
 
+	{#if form && form?.errorMessage}
+		<p>{form.errorMessage}</p>
+	{/if}
+
 	<form use:enhance method="post" enctype="multipart/form-data" action="?/loadList">
 		<label for="nameList">
 			Lista nomi

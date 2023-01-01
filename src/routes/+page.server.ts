@@ -11,6 +11,10 @@ export const actions: Actions = {
 		const people: Person[] = [];
 		const notFoundPeople: string[] = [];
 
+		if (names.length > 25) {
+			return fail(500, { errorMessage: 'La lista può essere di massimo 25 nomi, riprova!' });
+		}
+
 		for (const name of names) {
 			try {
 				people.push(await getInfoFromWikipedia(name, fetch));
