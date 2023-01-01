@@ -6,7 +6,7 @@
 </script>
 
 <main class="container">
-	{#if form && form.notFoundPeople?.length}
+	{#if form?.notFoundPeople?.length}
 		<p>Non sono riuscito a trovare le seguenti cariatidi:</p>
 		<ul>
 			{#each form.notFoundPeople as person}
@@ -15,8 +15,8 @@
 		</ul>
 	{/if}
 
-	{#if form && form?.errorMessage}
-		<p>{form.errorMessage}</p>
+	{#if form && 'error' in form}
+		<p>{form.error}</p>
 	{/if}
 
 	<form use:enhance method="post" enctype="multipart/form-data" action="?/loadList">
@@ -24,7 +24,8 @@
 			Lista nomi
 			<input type="file" name="nameList" id="nameList" />
 			<small
-				>La lista deve essere un documento di testo (.txt) e deve esserci un solo nome per linea</small
+				>La lista deve essere un documento di testo (.txt) e deve esserci un solo nome per linea;
+				Massimo 25 nomi</small
 			>
 		</label>
 		<button type="submit">Cerca</button>
