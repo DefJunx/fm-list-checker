@@ -6,6 +6,15 @@
 </script>
 
 <main class="container">
+	{#if form && form.notFoundPeople?.length}
+		<p>Non sono riuscito a trovare le seguenti cariatidi:</p>
+		<ul>
+			{#each form.notFoundPeople as person}
+				<li>{person}</li>
+			{/each}
+		</ul>
+	{/if}
+
 	<form use:enhance method="post" enctype="multipart/form-data" action="?/loadList">
 		<label for="nameList">
 			Lista nomi
@@ -53,15 +62,6 @@
 				</article>
 			{/each}
 		</div>
-	{/if}
-
-	{#if form && form.notFoundPeople?.length}
-		<p>Non sono riuscito a trovare le seguenti cariatidi:</p>
-		<ul>
-			{#each form.notFoundPeople as person}
-				<li>{person}</li>
-			{/each}
-		</ul>
 	{/if}
 </main>
 
