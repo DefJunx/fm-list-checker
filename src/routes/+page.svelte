@@ -14,14 +14,14 @@
 				>La lista deve essere un documento di testo (.txt) e deve esserci un solo nome per linea</small
 			>
 		</label>
-		<button type="submit">Go</button>
+		<button type="submit">Cerca</button>
 	</form>
 
 	<hr />
 
 	<form method="post" action="?/searchName" use:enhance>
 		<label for="name">
-			Single person search:
+			Ricerca per nome:
 			<input type="text" name="name" />
 		</label>
 		<button type="submit">Cerca</button>
