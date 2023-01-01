@@ -21,7 +21,7 @@
 
 	<form method="post" action="?/searchName" use:enhance>
 		<label for="name">
-			Ricerca per nome:
+			Ricerca per nome
 			<input type="text" name="name" />
 		</label>
 		<button type="submit">Cerca</button>
