@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@picocss/pico": "^1.5.6",
 		"wikipedia": "^2.0.0"
 	}
 }

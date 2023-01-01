@@ -28,16 +28,18 @@ export const actions: Actions = {
 	async searchName({ request, fetch }) {
 		const data = await request.formData();
 		const name = (await data.get('name')) as string;
-		let person: Person;
+		const notFoundPeople = [];
+		const people = [];
 
 		try {
-			person = await getInfoFromWikipedia(name, fetch);
+			people.push(await getInfoFromWikipedia(name, fetch));
 		} catch (e) {
-			throw fail(404, { notFound: true });
+			notFoundPeople.push(name);
 		}
 
 		return {
-			person
+			people,
+			notFoundPeople
 		};
 	}
 };

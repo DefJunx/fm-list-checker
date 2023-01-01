@@ -2,5 +2,5 @@
 
 ## TODO
 
-- [ ] Style
-- [ ] Restructure actions response
+- [X] Style
+- [X] Restructure actions response
