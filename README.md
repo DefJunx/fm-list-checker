@@ -3,3 +3,4 @@
 ## TODO
 
 - [ ] Style
+- [ ] Restructure actions response
