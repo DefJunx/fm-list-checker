@@ -48,22 +48,20 @@
 				<article>
 					<header>{person.name}</header>
 					<div>
-						<p>Età: {person.age}</p>
+						<p><strong>Età:</strong> {person.age}</p>
 						<p>
-							Data di nascita: {new Intl.DateTimeFormat('it-IT', { dateStyle: 'full' }).format(
-								person.dob
-							)}
+							<strong>Data di nascita:</strong>
+							{new Intl.DateTimeFormat('it-IT', { dateStyle: 'full' }).format(person.dob)}
 						</p>
 						{#if person.dod}
 							<p>
-								Data del decesso: {new Intl.DateTimeFormat('it-IT', { dateStyle: 'full' }).format(
-									person.dod
-								)}
+								<strong>Data del decesso:</strong>
+								{new Intl.DateTimeFormat('it-IT', { dateStyle: 'full' }).format(person.dod)}
 							</p>
-							<p>Punti: {151 - person.age}</p>
+							<p><strong>Punti:</strong> {151 - person.age}</p>
 						{/if}
 					</div>
-					<footer>Status: {person.dod ? '🪦' : '🫡'}</footer>
+					<footer>Come sta sto cristiano? {person.dod ? '🪦✝️☦️' : '🫡'}</footer>
 				</article>
 			{/each}
 		</div>
