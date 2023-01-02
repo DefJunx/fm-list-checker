@@ -41,7 +41,7 @@
 		<button type="submit">Cerca</button>
 	</form>
 
-	{#if form && form.people}
+	{#if form && form.people?.length}
 		<p>Ecco il riassunto del necrologio richiestomi:</p>
 		<div class="grid">
 			{#each form.people as person}
