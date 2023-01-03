@@ -69,7 +69,7 @@ export const getInfoFromWikipedia = async (
 		age = Math.ceil(Math.abs(+dod - +dob) / (1000 * 60 * 60 * 24 * 365));
 
 		return {
-			name,
+			name: sanitizeQuery(name),
 			dob,
 			dod,
 			age
@@ -77,7 +77,7 @@ export const getInfoFromWikipedia = async (
 	}
 
 	return {
-		name,
+		name: sanitizeQuery(name),
 		dob,
 		dod: undefined,
 		age
