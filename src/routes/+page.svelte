@@ -43,9 +43,9 @@
 
 	{#if form && form.people?.length}
 		<p>Ecco il riassunto del necrologio richiestomi:</p>
-		<div class="grid">
+		<div class="row">
 			{#each form.people as person}
-				<article>
+				<article class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 					<header>{person.name}</header>
 					<div>
 						<p><strong>Età:</strong> {person.age}</p>
@@ -72,27 +72,10 @@
 	main {
 		margin-top: 50px;
 	}
-
+	article {
+		padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
+	}
 	article > div {
 		min-height: 210px;
-	}
-
-	.grid {
-		grid-template-columns: repeat(5, 1fr);
-		grid-column-gap: 10px;
-	}
-
-	@media (max-width: 480px) {
-		.grid {
-			grid-template-columns: repeat(2, 1fr);
-			grid-column-gap: 5px;
-		}
-	}
-
-	@media (min-width: 480px) and (max-width: 740px) {
-		.grid {
-			grid-template-columns: repeat(3, 1fr);
-			grid-column-gap: 10px;
-		}
 	}
 </style>
