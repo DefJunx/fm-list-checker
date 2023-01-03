@@ -76,4 +76,23 @@
 	article > div {
 		min-height: 210px;
 	}
+
+	.grid {
+		grid-template-columns: repeat(5, 1fr);
+		grid-column-gap: 10px;
+	}
+
+	@media (max-width: 480px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+			grid-column-gap: 5px;
+		}
+	}
+
+	@media (min-width: 480px) and (max-width: 740px) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+			grid-column-gap: 10px;
+		}
+	}
 </style>
