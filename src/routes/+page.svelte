@@ -2,6 +2,10 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 
+	import alive from '$lib/assets/alive.png';
+	import dead from '$lib/assets/dead.png';
+	import Icon from '$lib/components/icon.svelte';
+
 	export let form: ActionData;
 </script>
 
@@ -61,7 +65,14 @@
 							<p><strong>Punti:</strong> {151 - person.age}</p>
 						{/if}
 					</div>
-					<footer>Come sta sto cristiano? {person.dod ? '🪦✝️☦️' : '🫡'}</footer>
+					<footer>
+						<span>Come sta sto cristian*?</span>
+						{#if person.dod}
+							<Icon iconSrc={dead} />
+						{:else}
+							<Icon iconSrc={alive} />
+						{/if}
+					</footer>
 				</article>
 			{/each}
 		</div>
@@ -77,5 +88,11 @@
 	}
 	article > div {
 		min-height: 210px;
+	}
+
+	article footer {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 	}
 </style>
