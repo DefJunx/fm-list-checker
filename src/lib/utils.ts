@@ -10,22 +10,23 @@ export type Person = {
 	age: number;
 };
 
+const fixedEncodeURIComponent = (query: string) =>
+	encodeURIComponent(query).replace(/[!'()*]/g, function (c) {
+		return '%' + c.charCodeAt(0).toString(16);
+	});
+
 const sanitizeQuery = (query: string) =>
-	query
-		.toLowerCase()
-		.split(' ')
-		.map((w) => w[0].toUpperCase() + w.substring(1))
-		.join(' ');
+	fixedEncodeURIComponent(query.replace(/\b(\w)/g, (s) => s.toUpperCase()));
 
 export const throwError = (code = 500, error = 'Unexpected Error') => fail(code, { error });
 
 export const getSearchUrl = (query: string) =>
-	`https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&ppprop=wikibase_item&titles=${encodeURIComponent(
-		sanitizeQuery(query)
+	`https://en.wikipedia.org/w/api.php?action=query&prop=pageprops&format=json&ppprop=wikibase_item&titles=${sanitizeQuery(
+		query
 	)}&formatversion=2`;
 export const getAlternativeSearchUrl = (query: string) =>
-	`https://it.wikipedia.org/w/api.php?format=json&action=query&prop=pageprops&redirects=1&titles=${encodeURIComponent(
-		sanitizeQuery(query)
+	`https://it.wikipedia.org/w/api.php?format=json&action=query&prop=pageprops&redirects=1&titles=${sanitizeQuery(
+		query
 	)}`;
 export const getPropsUrl = (wikibaseItemId: string) =>
 	`https://www.wikidata.org/w/api.php?action=wbgetentities&props=claims&ids=${wikibaseItemId}&format=json`;
@@ -69,7 +70,7 @@ export const getInfoFromWikipedia = async (
 		age = Math.ceil(Math.abs(+dod - +dob) / (1000 * 60 * 60 * 24 * 365));
 
 		return {
-			name: sanitizeQuery(name),
+			name: name.replace(/\b(\w)/g, (s) => s.toUpperCase()),
 			dob,
 			dod,
 			age
@@ -77,7 +78,7 @@ export const getInfoFromWikipedia = async (
 	}
 
 	return {
-		name: sanitizeQuery(name),
+		name: name.replace(/\b(\w)/g, (s) => s.toUpperCase()),
 		dob,
 		dod: undefined,
 		age
